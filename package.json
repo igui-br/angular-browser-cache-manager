@@ -1,6 +1,7 @@
 {
-  "name": "test",
-  "version": "0.0.0",
+  "name": "angular-browser-cache-manager",
+  "version": "0.0.1",
+  "main": "app/scripts/angular-browser-cache-manager.js",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
