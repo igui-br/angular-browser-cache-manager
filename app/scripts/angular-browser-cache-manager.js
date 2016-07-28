@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('BrowserCache', ['angular-data.DSCacheFactory'])
+  .module('BrowserCache', ['angular-cache'])
   .provider('$browserCache', function() {
     var __hashParameter = 'rev';
     var __customCacheMap = [];
@@ -27,7 +27,7 @@ angular
       }
     };
   })
-  .service('browserCacheManager', ['DSCacheFactory', '$browserCache', function (DSCacheFactory, $browserCache) {
+  .service('browserCacheManager', ['CacheFactory', '$browserCache', function (CacheFactory, $browserCache) {
     var defaultHash = -1, cacheName = 'BrowserCache';
     var customCacheMap = $browserCache.customCacheMap;
     var cleanURLParams = function (URL) {
@@ -41,7 +41,7 @@ angular
       return newURL;
     };
     // get cacheFactory service
-    this.__cacheFactory = this.__cacheFactory || new DSCacheFactory(cacheName, {storageMode: 'localStorage'});
+    this.__cacheFactory = this.__cacheFactory || CacheFactory(cacheName, {storageMode: 'localStorage'});
     this.get = function (specialKey) {
       specialKey = cleanURLParams(specialKey);
       // retrieve the hash parameter value from cache or initialize it
